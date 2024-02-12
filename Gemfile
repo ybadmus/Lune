@@ -39,10 +39,23 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
 end
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem 'annotate'
 end
 
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'rspec-rails', '~> 6.1', '>= 6.1.1'
+  gem 'rubocop', '~> 1.60', '>= 1.60.2', require: false
+  gem 'rubocop-performance', '~> 1.20', '>= 1.20.2', require: false
+  gem 'rubocop-rails', '~> 2.23', '>= 2.23.1', require: false
+  gem 'rubocop-rspec', '~> 2.26', '>= 2.26.1', require: false
+end
+
+gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
