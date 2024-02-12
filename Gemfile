@@ -59,3 +59,5 @@ group :test do
 end
 
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
+
+gem 'kaminari'
