@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :import_csv do
   desc 'This task will add the average ratings to the movies'
   task average_rating: :environment do

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class MoviesController < ApplicationController
-  before_action :set_movie, only: %i[ show update destroy ]
+  before_action :set_movie, only: %i[show update destroy]
 
   # GET /movies
   def index
@@ -14,21 +16,25 @@ class MoviesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_movie
-      @movie = Movie.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def movie_params
-      params.require(:movie).permit(:query)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
 
-    def filter_movies(movies, params)
-      return movies if params.blank? || params[:query].blank?
+  # Only allow a list of trusted parameters through.
+  def movie_params
+    params.require(:movie).permit(:query)
+  end
 
-      filtered_movies = movies
-      filtered_movies = filtered_movies.where('actor LIKE :query', query: "%#{params[:query]}%") if params[:query].present?
-      filtered_movies
+  def filter_movies(movies, params)
+    return movies if params.blank? || params[:query].blank?
+
+    filtered_movies = movies
+    if params[:query].present?
+      filtered_movies = filtered_movies.where('actor LIKE :query',
+                                              query: "%#{params[:query]}%")
     end
+    filtered_movies
+  end
 end

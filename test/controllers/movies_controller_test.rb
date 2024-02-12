@@ -1,35 +1,37 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class MoviesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @movie = movies(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get movies_url, as: :json
     assert_response :success
   end
 
-  test "should create movie" do
-    assert_difference("Movie.count") do
-      post movies_url, params: { movie: {  } }, as: :json
+  test 'should create movie' do
+    assert_difference('Movie.count') do
+      post movies_url, params: { movie: {} }, as: :json
     end
 
     assert_response :created
   end
 
-  test "should show movie" do
+  test 'should show movie' do
     get movie_url(@movie), as: :json
     assert_response :success
   end
 
-  test "should update movie" do
-    patch movie_url(@movie), params: { movie: {  } }, as: :json
+  test 'should update movie' do
+    patch movie_url(@movie), params: { movie: {} }, as: :json
     assert_response :success
   end
 
-  test "should destroy movie" do
-    assert_difference("Movie.count", -1) do
+  test 'should destroy movie' do
+    assert_difference('Movie.count', -1) do
       delete movie_url(@movie), as: :json
     end
 

@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 require 'csv'
 
 namespace :import_csv do
   desc 'This task will import data from movies.csv file'
   task movies: :environment do
-    @csv_file = Rails.root.join("movies.csv")
+    @csv_file = Rails.root.join('movies.csv')
     @movies_params = []
 
     CSV.foreach(@csv_file, headers: true) do |row|
-
       params = {
         actor: row['Actor'],
         director: row['Director'],
@@ -15,7 +16,7 @@ namespace :import_csv do
         description: row['Description'],
         filming_location: row['Filming location'],
         movie: row['Movie'],
-        year: row['Year'],
+        year: row['Year']
       }
 
       @movies_params << params
