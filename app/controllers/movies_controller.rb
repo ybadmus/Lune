@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
     @movies = filter_movies(@movies, params)
-    @movies = optional_paginate(@movies.order(updated_at: :desc))
+    @movies = @movies.sort_by(&:average_rating).reverse
   end
 
   # DELETE /movies/1
@@ -25,7 +25,8 @@ class MoviesController < ApplicationController
     end
 
     def filter_movies(movies, params)
-      return movies if params.blank?
+      return movies if params.blank? || params[:query].blank?
+
       filtered_movies = movies
       filtered_movies = filtered_movies.where('actor LIKE :query', query: "%#{params[:query]}%") if params[:query].present?
       filtered_movies

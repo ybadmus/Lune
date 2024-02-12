@@ -14,6 +14,5 @@
 class Review < ApplicationRecord
   include DestroyRecord
 
-  belongs_to :movie
   validates :movie, :review, presence: true
 end
