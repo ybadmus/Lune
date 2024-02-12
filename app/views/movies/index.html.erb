@@ -1,6 +1,6 @@
 <%= form_tag("movies/index", method: "get") do %>
   <%= label_tag(:query, "Search for:") %>
-  <%= text_field_tag(:query, params[:query]) %>
+  <%= text_field_tag(:query) %>
   <%= submit_tag("Search") %>
 <% end %>
 

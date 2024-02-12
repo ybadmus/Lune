@@ -4,6 +4,7 @@
 #
 #  id               :bigint           not null, primary key
 #  actor            :string(255)      not null
+#  average_rating   :decimal(5, 2)    default(0.0)
 #  country          :string(255)      default("")
 #  description      :text(65535)      not null
 #  director         :string(255)      not null

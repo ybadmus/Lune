@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_12_115337) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_12_153034) do
   create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "movie", null: false
     t.text "description", null: false
@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_12_115337) do
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "average_rating", precision: 5, scale: 2, default: "0.0"
   end
 
   create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

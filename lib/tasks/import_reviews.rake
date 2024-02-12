@@ -3,7 +3,7 @@ require 'csv'
 namespace :import_csv do
   desc 'This task will import data from movies.csv file'
   task reviews: :environment do
-    @csv_file = Rails.root.join("movies.csv")
+    @csv_file = Rails.root.join("reviews.csv")
     @reviews_params = []
 
     CSV.foreach(@csv_file, headers: true) do |row|
