@@ -22,4 +22,5 @@ class Movie < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   validates :movie, :country, :year, :actor, presence: true
+  validates :movie, uniqueness: { scope: :actor }
 end
